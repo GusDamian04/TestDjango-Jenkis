@@ -1,30 +1,20 @@
 pipeline {
     agent any
-
     stages {
-        stage('Clone Repository') {
+        stage('Instalar dependencias') {
             steps {
-                git branch: 'main', url: 'https://github.com/GusDamian04/TestDjango-Jenkis.git'
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\activate && pip install -r requirements.txt'
             }
         }
-
-        stage('Install Dependencies') {
+        stage('Migraciones') {
             steps {
-                bat 'py -m venv venv'
-                bat '. venv/Scripts/activate && pip install --upgrade pip'
-                bat '. venv/Scripts/activate && pip install -r requirements.txt'
+                bat 'venv\\Scripts\\activate && python manage.py migrate'
             }
         }
-
-        stage('Migrate') {
+        stage('Pruebas') {
             steps {
-                bat '. venv/Scripts/activate && py manage.py migrate'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                bat '. venv/Scripts/activate && py manage.py test'
+                bat 'venv\\Scripts\\activate && python manage.py test'
             }
         }
     }
