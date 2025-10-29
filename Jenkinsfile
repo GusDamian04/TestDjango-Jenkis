@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/tu-usuario/tu-proyecto-django.git'
+                git 'https://github.com/GusDamian04/TestDjango-Jenkis.git'
             }
         }
 
