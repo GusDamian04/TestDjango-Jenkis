@@ -10,21 +10,21 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'python -m venv venv'
-                bat '. venv/bin/activate && pip install --upgrade pip'
-                bat '. venv/bin/activate && pip install -r requirements.txt'
+                bat 'py -m venv venv'
+                bat '. venv/Scripts/activate && pip install --upgrade pip'
+                bat '. venv/Scripts/activate && pip install -r requirements.txt'
             }
         }
 
         stage('Migrate') {
             steps {
-                bat '. venv/bin/activate && python manage.py migrate'
+                bat '. venv/Scripts/activate && py manage.py migrate'
             }
         }
 
         stage('Test') {
             steps {
-                bat '. venv/bin/activate && python manage.py test'
+                bat '. venv/Scripts/activate && py manage.py test'
             }
         }
     }
