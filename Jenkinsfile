@@ -41,7 +41,7 @@ pipeline {
                 echo === Ejecutando pruebas ===
                 cd api_back
                 call ..\\venv\\Scripts\\activate
-                "C:\Users\Gus Damian\AppData\Local\Programs\Python\Launcher\py.exe" manage.py test
+                "C:\\Users\\Gus Damian\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe" manage.py test
                 '''
             }
         }
