@@ -13,11 +13,10 @@ pipeline {
             steps {
                 bat '''
                 echo === Creando entorno virtual ===
-                
-                "C:\Users\Gus Damian\AppData\Local\Programs\Python\Launcher\py.exe" -m venv venv
+                "C:/Users/Gus Damian/AppData/Local/Programs/Python/Launcher/py.exe" -m venv venv
 
                 echo === Activando entorno virtual e instalando dependencias ===
-                call venv\Scripts\activate
+                call venv/Scripts/activate
                 pip install --upgrade pip
                 pip install -r requirements.txt
                 '''
@@ -29,8 +28,8 @@ pipeline {
                 bat '''
                 echo === Ejecutando migraciones ===
                 cd api_back
-                call ..\\venv\\Scripts\\activate
-                "C:\Users\Gus Damian\AppData\Local\Programs\Python\Launcher\py.exe" manage.py migrate
+                call ../venv/Scripts/activate
+                "C:/Users/Gus Damian/AppData/Local/Programs/Python/Launcher/py.exe" manage.py migrate
                 '''
             }
         }
@@ -40,8 +39,8 @@ pipeline {
                 bat '''
                 echo === Ejecutando pruebas ===
                 cd api_back
-                call ..\\venv\\Scripts\\activate
-                "C:\\Users\\Gus Damian\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe" manage.py test
+                call ../venv/Scripts/activate
+                "C:/Users/Gus Damian/AppData/Local/Programs/Python/Launcher/py.exe" manage.py test
                 '''
             }
         }
