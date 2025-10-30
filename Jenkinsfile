@@ -28,7 +28,7 @@ pipeline {
                 echo === Activando entorno virtual e instalando dependencias ===
                 call venv/Scripts/activate
                 pip install --upgrade pip
-                pip install -r requirements.txt
+                pip install -r requeriments.txt
                 '''
             }
         }
