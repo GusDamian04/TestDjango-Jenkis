@@ -3,6 +3,16 @@ pipeline {
 
     stages {
 
+        stage('Verificar Python') {
+            steps {
+                bat '''
+                echo === Verificando instalación de Python ===
+                python --version
+                pip --version
+                '''
+            }
+        }
+
         stage('Clonar repositorio') {
             steps {
                 git branch: 'main', url: 'https://github.com/GusDamian04/TestDjango-Jenkis.git'
